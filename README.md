@@ -56,15 +56,23 @@ Credit_Card     : 4792226702710160
 ============================================================
 ```
 
-## 📝 Todo List / Roadmap
+## 📝 Todo List
 
 - [ ] **Real-world Geodata Integration:** Replace procedural generation with fetching real city, state, and zip codes.
 
 - [ ] **Mastercard Specific Algorithm:** Refine the credit card generation logic to strictly target Mastercard standards (IIN ranges and validation).
 
-- [ ] **SSH Key Generation:** Implement functionality to generate valid SSH key pairs automatically.
+- [ ] ~~**SSH Key Generation:** Implement functionality to generate valid SSH key pairs automatically.~~
 
-- [ ] **PGP Encryption Suite:** Add features to generate PGP keys and configure a corresponding secure email identity.
+    ```diff
+    - Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
+    ```
+
+- [ ] ~~**PGP Encryption Suite:** Add features to generate PGP keys and configure a corresponding secure email identity.~~
+
+    ```diff
+    - Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
+    ```
 
 - [ ] **Binary Compilation:** Provide build options to compile the script into standalone binaries for easier CLI usage (ELF64 for Linux, Batch scripts for Windows, Mach-O for macOS).
 
