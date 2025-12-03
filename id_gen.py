@@ -4,7 +4,7 @@ import string
 
 class DarkIdentityGenerator:
     def __init__(self):
-        # 1. Leetspeak mapping (100% ASCII Only)
+        # 1. Leetspeak mapping (100% ASCII Only) - As provided
         self.leet_map = {
             'a': ['4', '@', 'a', 'A'],
             'b': ['b', 'B'],
@@ -45,7 +45,7 @@ class DarkIdentityGenerator:
             "(=_=)", "(?_?)", "('_')", "(>_>)", "(<_<)"
         ]
         
-        # 2.consonant phonemes and vowels for pronounceable word generation
+        # 2. Consonant phonemes and vowels for pronounceable word generation
         self.vowels = "aeiou"
         self.consonants = "".join([c for c in string.ascii_lowercase if c not in self.vowels])
         
@@ -58,7 +58,7 @@ class DarkIdentityGenerator:
         return str(uuid.uuid4())
 
     def _generate_pronounceable_word(self, length=6):
-        """make a pronounceable word by alternating consonants and vowels"""
+        """Make a pronounceable word by alternating consonants and vowels"""
         word = ""
         is_consonant = random.choice([True, False])
         for _ in range(length):
@@ -81,8 +81,41 @@ class DarkIdentityGenerator:
                 leet_text += char.upper() if random.random() > 0.5 else char
         return leet_text
 
+    def _to_email_leetspeak(self, text):
+        """
+        Specialized Leetspeak for Emails.
+        Restricts characters to alphanumeric to ensure valid email syntax
+        while still looking 'hacker-ish'.
+        """
+        text = text.lower()
+        # Only use mappings that are safe for email addresses (no special chars like @, #, etc.)
+        safe_map = {
+            'a': '4',
+            'b': '8',
+            'e': '3',
+            'g': '9',
+            'i': '1',
+            'l': '1',
+            'o': '0',
+            's': '5',
+            't': '7',
+            'z': '2'
+        }
+        
+        leet_text = ""
+        for char in text:
+            if char in safe_map:
+                # 80% chance to convert to number, 20% keep as letter for readability
+                if random.random() > 0.2:
+                    leet_text += safe_map[char]
+                else:
+                    leet_text += char
+            else:
+                leet_text += char
+        return leet_text
+
     def _generate_phone(self):
-        """random phone number generation"""
+        """Random phone number generation"""
         country_code = random.randint(1, 99)
         part1 = random.randint(100, 999)
         part2 = random.randint(100, 999)
@@ -122,21 +155,30 @@ class DarkIdentityGenerator:
         return f"{house_num} {street_name} {street_type}, {city_name} City, {zip_code}"
 
     def _generate_company(self):
-        """fake company name generation"""
+        """Fake company name generation"""
         name = self._generate_pronounceable_word(random.randint(4, 8))
         suffix = random.choice(self.company_suffixes)
         return f"{name} {suffix}"
 
     def _generate_email(self, first_name, last_name):
-        """email generation based on name components"""
-        sep = random.choice(['.', '_', '', '-'])
+        """Email generation using safe leetspeak on the username"""
+        sep = random.choice(['.', '_', '-', ''])
+        
+        # 1. Create base string (e.g. "john_doe")
+        base_str = f"{first_name}{sep}{last_name}"
+        
+        # 2. Apply Safe Leetspeak (e.g. "j0hn_d03")
+        email_user = self._to_email_leetspeak(base_str)
+        
+        # 3. Add random suffix sometimes
+        if random.random() > 0.5:
+             email_user += str(random.randint(1, 99))
+
         domain = random.choice(self.email_domains)
-        num_suffix = random.choice(['', str(random.randint(1, 99))])
-        email_user = f"{first_name.lower()}{sep}{last_name.lower()}{num_suffix}"
         return f"{email_user}@{domain}"
 
     def create_identity(self):
-        # 1. generate Real Name
+        # 1. Generate Real Name
         first_name = self._generate_pronounceable_word(random.randint(4, 7))
         last_name = self._generate_pronounceable_word(random.randint(5, 8))
         full_name = f"{first_name} {last_name}"
