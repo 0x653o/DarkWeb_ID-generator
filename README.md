@@ -81,5 +81,5 @@ Credit_Card     : 4959-3420-5625-0553
     ```
   * [ ] ~~SSH Key Generation~~
     ```diff
-    - Will skip this implementation due out of focus.
+    - Will skip this implementation due to out of focus.
     ```
