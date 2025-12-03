@@ -1,81 +1,81 @@
-# 🕵️ DarkWeb Persona Generator (DB-less)
+🕵️ DarkWeb Persona Generator (DB-less)
 
 A lightweight, procedural identity generator written in Python. This tool creates unique, consistent, and anonymous personas without relying on any external databases or wordlists. It uses algorithmic patterns to synthesize pronounceable names, addresses, and valid formatted data on the fly.
 
-> **Note:** Designed for generating mock data, testing environments, and anonymous identification placeholders.
+Note: Designed for generating mock data, testing environments, and anonymous identification placeholders.
 
-## ✨ Key Features
+✨ Key Features
 
-* **Database-Free:** Zero external dependencies or static files (JSON/CSV/SQL). Everything is generated algorithmically.
+Database-Free: Zero external dependencies or static files (JSON/CSV/SQL). Everything is generated algorithmically.
 
-* **Procedural Names:** Uses a Consonant-Vowel switching algorithm to create fake but pronounceable names (e.g., "Vaxole", "Zunira").
+Procedural Names: Uses a Consonant-Vowel switching algorithm to create fake but pronounceable names (e.g., "Vaxole", "Zunira").
 
-* **Leetspeak Aliases:** Automatically converts generated names into hacker-style aliases (e.g., `V4X0L3_0x99`).
+Polymorphic Aliases & Kaomoji: Generates hacker-style aliases using advanced 1:N Leetspeak mapping (e.g., A → 4, @, /-\) combined with random ASCII emoticons (e.g., (o_O), >_<) or hex prefixes.
 
-* **Valid Syntax Credit Cards:** Generates 16-digit credit card numbers that pass the **Luhn Algorithm** (Mod 10) check (Syntactically valid, not financially active).
+Valid Syntax Credit Cards: Generates 16-digit credit card numbers that pass the Luhn Algorithm (Mod 10) check, formatted with hyphens for better readability (e.g., xxxx-xxxx-xxxx-xxxx).
 
-* **Context-Aware Emails:** Generates email addresses that match the generated user's name.
+Context-Aware Emails: Generates email addresses that match the generated user's name.
 
-* **Full Identity Suite:** Includes UUID, Phone (w/ Country Code), Address, Company, and internal IDs.
+Full Identity Suite: Includes UUID, Phone (w/ Country Code), Address, Company, and internal IDs.
 
+🛠️ Prerequisites
 
-## 🛠️ Prerequisites
+Python 3.x
 
-* Python 3.x
-* Standard Libraries only (`uuid`, `random`, `string`) - **No `pip install` required.**
+Standard Libraries only (uuid, random, string) - No pip install required.
 
-## 🚀 Usage
+🚀 Usage
 
-1.  Clone this repository or download the script.
-2.  Run the script directly from your terminal.
+Clone this repository or download the script.
 
-```bash
-#sh
-python3 id_gen.py
-
-#window
-py id_gen.py
-```
-
----
-
-## EXAMPLE OUTPUT
+Run the script directly from your terminal.
 
 ```sh
-PS> py .\id_gen.py
+# sh
+python3 dark_identity_generator.py
+
+# window
+py dark_identity_generator.py
+```
+
+
+EXAMPLE OUTPUT
+```sh
 ==================== GENERATED IDENTITY ====================
-Internal_ID     : 57180
-UUID            : d61c4420-3272-4c38-afb6-0282c94b2d82
-Alias           : 353X4DUD32U_0x79
-Real_Name       : Esexad Udezu
-Email           : esexadudezu@mail.onion
-Phone           : +21-651-564-1944
-Address         : 4510 Zuvixuti Ave, Avumixaq City, 28141
-Company         : Gidit Solutions
-Credit_Card     : 4792226702710160
+Internal_ID     : 48291
+UUID            : a1b2c3d4-e5f6-7890-1234-567890abcdef
+Alias           : (o_O)_V4X0L3
+Real_Name       : Vaxole Zunira
+Email           : vaxole_zunira88@proton.me
+Phone           : +82-123-456-7890
+Address         : 1234 Mokagi Ln, Zunira City, 54321
+Company         : Vaxole Systems
+Credit_Card     : 4532-1234-5678-9010
 ============================================================
 ```
 
-## 📝 Todo List
 
-- [ ] **Real-world Geodata Integration:** Replace procedural generation with fetching real city, state, and zip codes.
+📝 Todo List
 
-- [ ] **Mastercard Specific Algorithm:** Refine the credit card generation logic to strictly target Mastercard standards (IIN ranges and validation).
+[ ] Real-world Geodata Integration: Replace procedural generation with fetching real city, state, and zip codes.
 
-- [ ] ~~**SSH Key Generation:** Implement functionality to generate valid SSH key pairs automatically.~~
+[ ] Mastercard Specific Algorithm: Refine the credit card generation logic to strictly target Mastercard standards (IIN ranges and validation).
 
-    ```diff
-    - Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
-    ```
+[ ] ~~SSH Key Generation: Implement functionality to generate valid SSH key pairs automatically.~~
+```diff
+- Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
+```
 
-- [ ] ~~**PGP Encryption Suite:** Add features to generate PGP keys and configure a corresponding secure email identity.~~
 
-    ```diff
-    - Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
-    ```
+[ ] ~~PGP Encryption Suite: Add features to generate PGP keys and configure a corresponding secure email identity.~~
 
-- [ ] **Binary Compilation:** Provide build options to compile the script into standalone binaries for easier CLI usage (ELF64 for Linux, Batch scripts for Windows, Mach-O for macOS).
+```diff
+- Will skip this implementation due to the inability to communicate with generated emails and no intent to collect user data.
+```
 
-- [ ] **Integrity Verification:** Auto-generate a `checksum.txt` file for output validation.
 
-- [ ] **Realistic Name API:** Integrate with public APIs to fetch real-world names, replacing the current phoneme-based synthesis for higher realism.
+[ ] Binary Compilation: Provide build options to compile the script into standalone binaries for easier CLI usage (ELF64 for Linux, Batch scripts for Windows, Mach-O for macOS).
+
+[ ] Integrity Verification: Auto-generate a checksum.txt file for output validation.
+
+[ ] Realistic Name API: Integrate with public APIs to fetch real-world names, replacing the current phoneme-based synthesis for higher realism.
