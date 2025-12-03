@@ -75,11 +75,11 @@ Credit_Card     : 4959-3420-5625-0553
 
 ### ⛔ Cancelled / Deprecated
 
-  * [ ] \~\~Mastercard Specific Algorithm\~\~
+  * [ ] ~~Mastercard Specific Algorithm~~
     ```diff
     - Cancelled as distinguishing card types is meaningless in this context. No further development planned for specific card issuer algorithms.
     ```
-  * [ ] \~\~SSH Key Generation\~\~
+  * [ ] ~~SSH Key Generation~~
     ```diff
     - Will skip this implementation due out of focus.
     ```
